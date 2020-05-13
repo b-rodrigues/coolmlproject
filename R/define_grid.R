@@ -1,16 +1,16 @@
 #' Define the grid
 #'
 #' @param model_spec A model specification
-#' @param grid_size The size of the grid
-#' @param finalize Should the parameters be finalized (mtry for tree based model for instance)
+#' @param predictor_data The predictor data used to finalize the grid
+#' @param grid_type The type of grid
 #' @return 
 #' @import tune dials
 #' @export
-define_grid <- function(model_spec, predictor_data, grid, ...){
+define_grid <- function(model_spec, predictor_data, grid_type, ...){
 
-  model %>%
+  model_spec %>%
     parameters() %>%
     finalize(x = predictor_data) %>%
-    grid(...)
+    grid_type(...)
 
 }
