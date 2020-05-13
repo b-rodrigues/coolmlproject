@@ -6,7 +6,7 @@
 #' @return 
 #' @import tune dials
 #' @export
-define_grid <- function(model, predictor_data, grid, ...){
+define_grid <- function(model_spec, predictor_data, grid, ...){
 
   model %>%
     parameters() %>%
