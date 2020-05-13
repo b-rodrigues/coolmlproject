@@ -20,9 +20,7 @@ plan <- drake_plan(
 
   testing_set = datasets$data_test,
 
-  training_splits = rsample::vfold_cv(training_set, v = 10),
-  
-  preprocess = preprocess(training_set),
+  training_splits = rsample::vfold_cv(training_set, v = 3),
 
   boosted_trees_model = define_model(boost_tree, "xgboost", "classification",
                                      mtry = tune(),
