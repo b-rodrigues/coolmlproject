@@ -7,7 +7,7 @@ get_data <- function(){
 
   data_train <- read_csv("https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data",
                          col_names = FALSE) %>%
-    sample_n(1000)
+    sample_n(100)
 
   column_names <- c("age",
                     "workclass",
