@@ -8,8 +8,8 @@
 #' @export
 define_model <- function(model, engine, mode, ...){
 
-  model(...) %>%
-    set_engine(engine) %>%
-    set_mode(mode)
+  parsnip::model(...) %>%
+    parsnip::set_engine(engine) %>%
+    parsnip::set_mode(mode)
 
 }

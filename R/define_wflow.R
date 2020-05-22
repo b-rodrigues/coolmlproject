@@ -7,8 +7,8 @@
 #' @export
 define_wflow <- function(recipe, model, ...){
 
-  workflow() %>%
-    add_recipe(recipe) %>%
-    add_model(model)
+  workflows::workflow() %>%
+    workflows::add_recipe(recipe) %>%
+    workflows::add_model(model)
 
 }

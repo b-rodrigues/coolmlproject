@@ -1,17 +1,3 @@
-## load (and, if not present, install) necessary packages
-if (!require("pacman")) install.packages("pacman"); library(pacman)
-
-pacman::p_load(coolmlproject, 
-               dplyr,
-               drake,
-               parsnip,
-               dials,
-               tune)
-
-# pacman::p_load(tidymodels)
-
-
-
 plan <- drake_plan(
 
   datasets = get_data(),

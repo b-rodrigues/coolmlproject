@@ -5,6 +5,6 @@
 #' @importFrom recipes recipe step_dummy all_predictors
 #' @export
 preprocess <- function(training_set){
-  recipe(target ~ ., data = training_set) %>%
-    step_dummy(all_predictors())
+  recipes::recipe(target ~ ., data = training_set) %>%
+   recipes::step_dummy(recipes::all_predictors())
 }

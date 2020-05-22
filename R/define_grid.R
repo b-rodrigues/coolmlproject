@@ -9,8 +9,8 @@
 define_grid <- function(model_spec, predictor_data, grid_type, ...){
 
   model_spec %>%
-    parameters() %>%
-    finalize(x = predictor_data) %>%
+    tune::parameters() %>%
+    dials::finalize(x = predictor_data) %>%
     grid_type(...)
 
 }
