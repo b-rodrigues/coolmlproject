@@ -4,14 +4,14 @@
 \alias{define_grid}
 \title{Define the grid}
 \usage{
-define_grid(model, predictor_data, grid, ...)
+define_grid(model_spec, predictor_data, grid_type, ...)
 }
 \arguments{
 \item{model_spec}{A model specification}
 
-\item{grid_size}{The size of the grid}
+\item{predictor_data}{The predictor data used to finalize the grid}
 
-\item{finalize}{Should the parameters be finalized (mtry for tree based model for instance)}
+\item{grid_type}{The type of grid}
 }
 \value{
 
