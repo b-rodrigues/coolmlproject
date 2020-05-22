@@ -1,15 +1,13 @@
 Package: coolmlproject
-Title: What the Package Does (One Line, Title Case)
+Title: This is a prototype of a machine learning project encapsulated in a package and run via drake
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Bruno",
+           family = "Rodrigues",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+           email = "bruno@brodrigues.co"))
+Description: This is a template package that should be a good basis for you to start sharing machine learning projects using drake.
+License: WTFPL
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
@@ -21,4 +19,5 @@ Depends:
   dials,
   parsnip,
   readr,
+  drake,
   dplyr
