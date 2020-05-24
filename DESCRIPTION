@@ -18,6 +18,9 @@ Depends:
   tune,
   dials,
   parsnip,
+  yardstick,
   readr,
   drake,
-  dplyr
+  dplyr,
+  bookdown,
+  stringr

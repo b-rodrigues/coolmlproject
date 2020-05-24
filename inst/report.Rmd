@@ -1,0 +1,20 @@
+---
+title: "Sample report"
+author: "Bruno Rodrigues"
+date: "May 24th, 2020"
+output: bookdown::word_document2
+---
+
+This is a sample report that gets compiled with the results of the drake plan.
+
+You can call compiled targets with:
+
+```{r}
+readd(conf_mat_boost)
+```
+
+You can then pass compiled objects to other functions:
+
+```{r}
+autoplot(readd(roc_curve_boost))
+```

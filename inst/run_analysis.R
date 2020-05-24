@@ -56,11 +56,27 @@ plan <- drake_plan(
 
   fit_boosted_trees = fit(best_boost_wflow, data = training_set),
 
+  show_lvl = show_lvl(fit_boosted_trees),
+
   boost_predictions_prob = predict(fit_boosted_trees, testing_set, "prob"),
 
-  boost_predictions_class = predict(fit_boosted_trees, testing_set, "class")
+  boost_predictions_class = predict(fit_boosted_trees, testing_set, "class"),
 
+  testing_set_and_preds = bind_cols(
+    list(
+      testing_set,
+      boost_predictions_prob,
+      boost_predictions_class
+    )),
 
+  conf_mat_boost = conf_mat(testing_set_and_preds, truth = target, estimate = .pred_class),
+
+  roc_curve_boost = roc_curve(testing_set_and_preds, truth = target, `.pred_<=50K`),
+
+  roc_auc_boost = roc_auc(testing_set_and_preds, truth = target, `.pred_<=50K`),
+
+  report = rmarkdown::render(knitr_in("full_path_to/inst/report.Rmd"),
+                             output_file = file_out("full_path_to/inst/report.docx"))
 
 
 )
