@@ -1,3 +1,14 @@
+library(workflows)
+library(yardstick)
+library(recipes)
+library(tune)
+library(dials)
+library(parsnip)
+library(readr)
+library(drake)
+library(dplyr)
+library(coolmlproject)
+
 plan <- drake_plan(
 
   datasets = get_data(),
@@ -28,7 +39,29 @@ plan <- drake_plan(
 
   tuned_boosted_trees = tune_grid(boost_wflow,
                                   training_splits,
-                                  boost_grid)
+                                  boost_grid),
+
+  best_boosted_trees_hyperparams = select_best(tuned_boosted_trees, "roc_auc") %>%
+                                                               as.list(),
+
+  best_boosted_trees_model = define_model(boost_tree,
+                                    "xgboost",
+                                    "classification",
+                                    mtry = best_boosted_trees_hyperparams$mtry,
+                                    trees = best_boosted_trees_hyperparams$trees,
+                                    tree_depth = best_boosted_trees_hyperparams$tree_depth),
+
+  best_boost_wflow = define_wflow(preprocessed,
+                             best_boosted_trees_model),
+
+  fit_boosted_trees = fit(best_boost_wflow, data = training_set),
+
+  boost_predictions_prob = predict(fit_boosted_trees, testing_set, "prob"),
+
+  boost_predictions_class = predict(fit_boosted_trees, testing_set, "class")
+
+
+
 
 )
 

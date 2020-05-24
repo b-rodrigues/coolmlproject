@@ -5,7 +5,7 @@ Authors@R:
     person(given = "Bruno",
            family = "Rodrigues",
            role = c("aut", "cre"),
-           email = "bruno@brodrigues.co"))
+           email = "bruno@brodrigues.co")
 Description: This is a template package that should be a good basis for you to start sharing machine learning projects using drake.
 License: WTFPL
 Encoding: UTF-8
